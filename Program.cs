@@ -12,37 +12,45 @@ namespace HT.Martian.Robots
     {
         static void Main(string[] args)
         {
-            var path = Path.Join(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Input\data.txt");
-
-            IFileService fileService = new TextFileService();
-            var fileViewModel = fileService.ReadFile(path);
-
-            IEnviromentService envService = new EnviromentService();
-            envService.Init(
-                fileViewModel.coord.X,
-                fileViewModel.coord.Y
-                );
-
-            var responses = new List<string>();
-            foreach (var robot in fileViewModel.robots)
+            try
             {
-                var botSplitted = robot.Key.Split(' ');
-                var botCoordX = botSplitted[0];
-                var botCoordY = botSplitted[1];
-                var botOrientation = botSplitted[2];
+                var path = Path.Join(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Input\data.txt");
+                IFileService fileService = new TextFileService();
+                var fileViewModel = fileService.ReadFile(path);
 
-                var response = envService.ProcessInstructions(
-                    new RobotViewModel(new CoordViewModel(int.Parse(botCoordX), int.Parse(botCoordY)),
-                    new OrientationViewModel(botOrientation),
-                    robot.Value
-                    ));
+                IEnviromentService envService = new EnviromentService();
+                envService.Init(
+                    fileViewModel.coord.X,
+                    fileViewModel.coord.Y
+                    );
 
-                responses.Add(response);
+                var responses = new List<string>();
+                foreach (var robot in fileViewModel.robots)
+                {
+                    var botSplitted = robot.Key.Split(' ');
+                    var botCoordX = botSplitted[0];
+                    var botCoordY = botSplitted[1];
+                    var botOrientation = botSplitted[2];
 
-                Console.WriteLine(response);
+                    var response = envService.ProcessInstructions(
+                        new RobotViewModel(new CoordViewModel(int.Parse(botCoordX), int.Parse(botCoordY)),
+                        new OrientationViewModel(botOrientation),
+                        robot.Value
+                        ));
+
+                    responses.Add(response);
+
+                    Console.WriteLine(response);
+                }
             }
-
-            Console.ReadLine();
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
         }
     }
 }

@@ -16,9 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Core\Interfaces\Repositories\" />
-    <Folder Include="Core\Models\" />
-    <Folder Include="Repositories\" />
+    <ProjectReference Include="..\HT.Martian.Robots.Core\HT.Martian.Robots.Core.csproj" />
   </ItemGroup>
 
 </Project>
