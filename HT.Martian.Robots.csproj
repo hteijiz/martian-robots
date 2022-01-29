@@ -6,6 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="HT.Martian.Robots.Core\**" />
+    <Compile Remove="HT.Martian.Robots.xUnit\**" />
+    <EmbeddedResource Remove="HT.Martian.Robots.Core\**" />
+    <EmbeddedResource Remove="HT.Martian.Robots.xUnit\**" />
+    <None Remove="HT.Martian.Robots.Core\**" />
+    <None Remove="HT.Martian.Robots.xUnit\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Input\data.txt" />
   </ItemGroup>
 
@@ -16,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HT.Martian.Robots.Core\HT.Martian.Robots.Core.csproj" />
+    <ProjectReference Include="HT.Martian.Robots.Core\HT.Martian.Robots.Core.csproj" />
   </ItemGroup>
 
 </Project>
