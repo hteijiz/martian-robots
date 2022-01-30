@@ -1,13 +1,13 @@
 ﻿using HT.Martian.Robots.Core.Interfaces.Services;
-using HT.Martian.Robots.Core.Interfaces.ViewModels;
+using HT.Martian.Robots.Core.Interfaces.Models;
 using System.Collections.Generic;
 
 namespace HT.Martian.Robots.Services
 {
     public class RobotService : IRobotService
     {
-        private RobotViewModel robot;
-        public RobotService(RobotViewModel bot)
+        private Robot robot;
+        public RobotService(Robot bot)
         {
             robot = bot;
         }
@@ -19,7 +19,7 @@ namespace HT.Martian.Robots.Services
             { "F", new MoveForwardCommand() }
         };
 
-        public string Handler(EnviromentViewModel env)
+        public string Handler(Enviroment env)
         {
             foreach (var instruction in robot.Instructions)
             {

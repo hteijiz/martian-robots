@@ -1,5 +1,5 @@
 ﻿using HT.Martian.Robots.Core.Interfaces.Services;
-using HT.Martian.Robots.Core.Interfaces.ViewModels;
+using HT.Martian.Robots.Core.Interfaces.Models;
 using HT.Martian.Robots.Services;
 using System;
 using System.Collections.Generic;
@@ -16,16 +16,16 @@ namespace HT.Martian.Robots
             {
                 var path = Path.Join(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Input\data.txt");
                 IFileService fileService = new TextFileService();
-                var fileViewModel = fileService.ReadFile(path);
+                var file = fileService.ReadFile(path);
 
                 IEnviromentService envService = new EnviromentService();
                 envService.Init(
-                    fileViewModel.coord.X,
-                    fileViewModel.coord.Y
+                    file.coord.X,
+                    file.coord.Y
                     );
 
                 var responses = new List<string>();
-                foreach (var robot in fileViewModel.robots)
+                foreach (var robot in file.robots)
                 {
                     var botSplitted = robot.Key.Split(' ');
                     var botCoordX = botSplitted[0];
@@ -33,8 +33,8 @@ namespace HT.Martian.Robots
                     var botOrientation = botSplitted[2];
 
                     var response = envService.ProcessInstructions(
-                        new RobotViewModel(new CoordViewModel(int.Parse(botCoordX), int.Parse(botCoordY)),
-                        new OrientationViewModel(botOrientation),
+                        new Robot(new Coord(int.Parse(botCoordX), int.Parse(botCoordY)),
+                        new OrientationModel(botOrientation),
                         robot.Value
                         ));
 

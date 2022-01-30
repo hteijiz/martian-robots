@@ -1,13 +1,13 @@
 ﻿using HT.Martian.Robots.Core.Core.Models.Exceptions;
 using HT.Martian.Robots.Core.Interfaces.Services;
-using HT.Martian.Robots.Core.Interfaces.ViewModels;
+using HT.Martian.Robots.Core.Interfaces.Models;
 using System;
 
 namespace HT.Martian.Robots.Services
 {
     public class EnviromentService : IEnviromentService
     {
-        private EnviromentViewModel Enviroment { get; set; }
+        private Enviroment Enviroment { get; set; }
 
         public void Init(int x, int y)
         {
@@ -18,10 +18,10 @@ namespace HT.Martian.Robots.Services
             if (y <= 0)
                 throw new FailInitEnvException("Fail: Coord Y must be greather than zero");
 
-            Enviroment = new EnviromentViewModel(x, y);
+            Enviroment = new Enviroment(x, y);
         }
 
-        public string ProcessInstructions(RobotViewModel bot)
+        public string ProcessInstructions(Robot bot)
         {
             if (bot == null)
                 throw new ArgumentNullException("bot");

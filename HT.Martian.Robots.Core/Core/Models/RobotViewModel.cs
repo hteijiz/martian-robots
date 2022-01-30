@@ -1,20 +1,20 @@
-﻿namespace HT.Martian.Robots.Core.Interfaces.ViewModels
+﻿namespace HT.Martian.Robots.Core.Interfaces.Models
 {
-    public class RobotViewModel
+    public class Robot
     {
-        public CoordViewModel Coord
+        public Coord Coord
         {
             get;
             set;
         }
-        public OrientationViewModel Orientation { get; set; }
+        public OrientationModel Orientation { get; set; }
 
         public string Instructions { get; set; }
 
         public bool IsLost { get; set; }
 
-        public RobotViewModel(CoordViewModel coord,
-            OrientationViewModel orientation,
+        public Robot(Coord coord,
+            OrientationModel orientation,
             string instructions)
         {
             Coord = coord;

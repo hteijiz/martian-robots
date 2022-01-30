@@ -1,5 +1,5 @@
 ﻿using HT.Martian.Robots.Core.Interfaces.Services;
-using HT.Martian.Robots.Core.Interfaces.ViewModels;
+using HT.Martian.Robots.Core.Interfaces.Models;
 using System.Collections.Generic;
 using System.IO;
 
@@ -7,7 +7,7 @@ namespace HT.Martian.Robots.Services
 {
     public class TextFileService : IFileService
     {
-        public FileViewModel ReadFile(string file)
+        public FileConfig ReadFile(string file)
         {
             if (!File.Exists(file))
                 throw new FileNotFoundException("Batch file not found");
@@ -31,7 +31,7 @@ namespace HT.Martian.Robots.Services
                     robots.TryAdd(robotKey, robotInstructions);
                 }
 
-                return new FileViewModel(
+                return new FileConfig(
                     envCoordX,
                     envCoordY,
                     robots

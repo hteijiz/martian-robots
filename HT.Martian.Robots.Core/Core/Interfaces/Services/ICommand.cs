@@ -1,9 +1,9 @@
-﻿using HT.Martian.Robots.Core.Interfaces.ViewModels;
+﻿using HT.Martian.Robots.Core.Interfaces.Models;
 
 namespace HT.Martian.Robots.Core.Interfaces.Services
 {
     public interface ICommand
     {
-        void Execute(RobotViewModel bot, EnviromentViewModel env);
+        void Execute(Robot bot, Enviroment env);
     }
 }

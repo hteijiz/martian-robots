@@ -22,9 +22,9 @@ namespace HT.Martian.Robots.xUnit
         {
             var path = Path.Join(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Input\data.txt");
             IFileService fileService = new TextFileService();
-            var fileViewModel = fileService.ReadFile(path);
+            var file = fileService.ReadFile(path);
 
-            Assert.NotNull(fileViewModel);
+            Assert.NotNull(file);
         }
     }
 }

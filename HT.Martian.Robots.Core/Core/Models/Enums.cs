@@ -1,4 +1,4 @@
-﻿namespace HT.Martian.Robots.Core.ViewModels
+﻿namespace HT.Martian.Robots.Core.Models
 {
     public enum Orientation : int
     {

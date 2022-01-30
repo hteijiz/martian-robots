@@ -1,9 +1,9 @@
-﻿using HT.Martian.Robots.Core.ViewModels;
+﻿using HT.Martian.Robots.Core.Models;
 using System.Collections.Generic;
 
-namespace HT.Martian.Robots.Core.Interfaces.ViewModels
+namespace HT.Martian.Robots.Core.Interfaces.Models
 {
-    public class OrientationViewModel
+    public class OrientationModel
     {
         private string currentOrientation;
         private IDictionary<string, Orientation> orientationMap = new Dictionary<string, Orientation>()
@@ -28,7 +28,7 @@ namespace HT.Martian.Robots.Core.Interfaces.ViewModels
             return orientationLetterMap[current];
         }
 
-        public OrientationViewModel(string orientation)
+        public OrientationModel(string orientation)
         {
             currentOrientation = orientation;
             current = orientationMap[orientation];
