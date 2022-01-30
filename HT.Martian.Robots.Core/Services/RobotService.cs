@@ -21,6 +21,12 @@ namespace HT.Martian.Robots.Services
 
         public string Handler(Enviroment env)
         {
+            if(string.IsNullOrWhiteSpace(robot.Instructions))
+                return $"{robot.Coord.X} {robot.Coord.Y} {robot.Orientation} ZERO INST";
+
+            if (robot.Instructions.Length > 100)
+                return $"{robot.Coord.X} {robot.Coord.Y} {robot.Orientation} TOO MANY INST";
+
             foreach (var instruction in robot.Instructions)
             {
                 if (robot.IsLost) break;
